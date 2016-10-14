@@ -1,0 +1,9 @@
+rofi.color-enebled
+rofi.lines: 5
+rofi.eh: 2
+rofi.opacity: 85
+rofi.font: System San Francisco Display 18
+
+rofi.color-window: #1f222d
+
+rofi.color-normal: #1f222d, #708090, #1f222d, #1f222d, #f0fbfd

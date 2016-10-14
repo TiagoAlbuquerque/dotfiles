@@ -13,3 +13,6 @@ set guioptions-=r
 set guioptions-=L
 
 colors desert
+
+set number
+set relativenumber

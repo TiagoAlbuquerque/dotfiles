@@ -7,38 +7,177 @@
 #################
 
 # mod key Mod1=alt Mod4=win
-  set $mod Mod1
+    set $mod Mod1
 
 # Colors
-  set $base00 #101218
-  set $base01 #1f222d
-  set $base02 #252936
-  set $base03 #7780a1
-  set $base04 #C0C5CE
-  set $base05 #d1d4e0
-  set $base06 #C9CCDB
-  set $base07 #ffffff
-  set $base08 #ee829f
-  set $base09 #f99170
-  set $base0A #ffefcc
-  set $base0B #a5ffe1
-  set $base0C #97e0ff
-  set $base0D #97bbf7
-  set $base0E #c0b7f9
-  set $base0F #fcc09e
+    set $base00 #101218
+    set $base01 #1f222d
+    set $base02 #252936
+    set $base03 #7780a1
+    set $base04 #C0C5CE
+    set $base05 #d1d4e0
+    set $base06 #C9CCDB
+    set $base07 #ffffff
+    set $base08 #ee829f
+    set $base09 #f99170
+    set $base0A #ffefcc
+    set $base0B #a5ffe1
+    set $base0C #97e0ff
+    set $base0D #97bbf7
+    set $base0E #c0b7f9
+    set $base0F #fcc09e
 
-# workspaces naming variables
-  set $ws1 "1 " #Opera logo for browsers workspace
-  set $ws2 "2 " 
-  set $ws3 "3 "
-  set $ws4 "4"
-  set $ws5 "5"
-  set $ws6 "6"
-  set $ws7 "7"
-  set $ws8 "8"
-  set $ws9 "9"
-  set $ws10 "10 " #Spotify logo for music players
+# Workspaces naming constants 
+    set $ws1 "1 "
+    set $ws2 "2 " 
+    set $ws3 "3 "
+    set $ws4 "4 "
+    set $ws5 "5 "
+    set $ws6 "6 "
+    set $ws7 "7 "
+    set $ws8 "8 "
+    set $ws9 "9 "
+    set $ws10 "10 "
 
+# Basic configurations    
+    
+    font pango:System San Francisco Display 10
+    floating_modifier $mod
+    hide_edge_borders both
+
+# Window-related bindings
+    
+    # kill focused window
+    bindsym $mod+Shift+q kill
+
+    # change focus
+    bindsym $mod+h focus left
+    bindsym $mod+j focus down
+    bindsym $mod+k focus up
+    bindsym $mod+l focus right
+    # alternatively, you can use the arrow keys:
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+    # move focused window
+    bindsym $mod+Shift+h move left
+    bindsym $mod+Shift+j move down
+    bindsym $mod+Shift+k move up
+    bindsym $mod+Shift+l move right
+    # alternatively, you can use the arrow keys:
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+
+    # enter fullscreen mode for the focused container
+    bindsym $mod+f fullscreen
+    # toggle tiling / floating
+    bindsym $mod+Shift+space floating toggle
+
+    # resize window (you can also use the mouse for that)
+    mode "  " {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing down will shrink the window’s height.
+        # Pressing up will grow the window’s height.
+        bindsym h resize shrink width 2 px or 2 ppt
+        bindsym l resize grow width 3 px or 3 ppt
+        bindsym j resize shrink height 2 px or 2 ppt
+        bindsym k resize grow height 3 px or 3 ppt
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 2 px or 2 ppt
+        bindsym Right resize grow width 3 px or 3 ppt
+        bindsym Down resize shrink height 2 px or 2 ppt
+        bindsym Up resize grow height 3 px or 3 ppt 
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+    }
+    bindsym $mod+r mode "  "
+
+# Widow Colours
+#                         border  background text    indicator
+  client.focused          $base01 $base01    $base07 $base0F
+  client.focused_inactive $base02 $base02    $base03 $base0F
+  client.unfocused        $base02 $base02    $base03 $base0F
+  client.urgent           $base02 $base08    $base00 $base0F
+
+# Workspace-related bindings
+
+    # switch to workspace
+    bindsym $mod+1 workspace $ws1
+    bindsym $mod+2 workspace $ws2
+    bindsym $mod+3 workspace $ws3
+    bindsym $mod+4 workspace $ws4
+    bindsym $mod+5 workspace $ws5
+    bindsym $mod+6 workspace $ws6
+    bindsym $mod+7 workspace $ws7
+    bindsym $mod+8 workspace $ws8
+    bindsym $mod+9 workspace $ws9
+    bindsym $mod+0 workspace $ws10
+    
+    # move focused container to workspace
+    bindsym $mod+Shift+1 move container to workspace $ws1
+    bindsym $mod+Shift+2 move container to workspace $ws2
+    bindsym $mod+Shift+3 move container to workspace $ws3
+    bindsym $mod+Shift+4 move container to workspace $ws4
+    bindsym $mod+Shift+5 move container to workspace $ws5
+    bindsym $mod+Shift+6 move container to workspace $ws6
+    bindsym $mod+Shift+7 move container to workspace $ws7
+    bindsym $mod+Shift+8 move container to workspace $ws8
+    bindsym $mod+Shift+9 move container to workspace $ws9
+    bindsym $mod+Shift+0 move container to workspace $ws10
+
+    # fix appications to specific workspaces
+    assign [class="Opera"] $ws1
+#    assign [class="Gvim"] $ws2
+    
+# Bar-related bindings    
+    
+    bar {
+        status_command i3status
+        colors {
+            separator $base03
+            background $base01
+            statusline $base05
+#                              border  background text
+            focused_workspace  $base01 $base01    $base07
+            active_workspace   $base01 $base02    $base03
+            inactive_workspace $base01 $base01    $base03
+            urgent_workspace   $base01 $base01    $base08
+        }
+    }
+
+# Program-related bindings
+    
+    # start a terminal
+    bindsym $mod+Return exec i3-sensible-terminal
+    # start dmenu (a program launcher)
+    # bindsym $mod+d exec dmenu_run
+    bindsym $mod+d exec rofi -show run 
+    # lock screen
+    bindsym $mod+shift+x exec i3lock
+    # execute Opera on startup
+    exec opera
+    
+# Restart-related bindings
+
+    # reload the configuration file
+    bindsym $mod+Shift+c reload
+    # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+    bindsym $mod+Shift+r restart
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
+
+
+exec_always --no-startup-id compton -f
 
 
 # This file has been auto-generated by i3-config-wizard(1).
@@ -57,7 +196,6 @@
 # is used in the bar {} block below.
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
-font pango:System San Francisco Display 10
 #font pango:monospace 10 
 
 # Before i3 v4.8, we used to recommend this one as the default:
@@ -68,48 +206,18 @@ font pango:System San Francisco Display 10
 # font, it doesn’t scale on retina/hidpi displays.
 
 # Use Mouse+$mod to drag floating windows to their wanted position
-floating_modifier $mod
 
-# start a terminal
-bindsym $mod+Return exec i3-sensible-terminal
 
-# kill focused window
-bindsym $mod+Shift+q kill
 
-# lock screen
-bindsym $mod+shift+x exec i3lock
 
-# start dmenu (a program launcher)
-bindsym $mod+d exec dmenu_run
 
 # There also is the (new) i3-dmenu-desktop which only displays applications
 # shipping a .desktop file. It is a wrapper around dmenu, so you need that
 # installed.
 # bindsym $mod+d exec --no-startup-id i3-dmenu-desktop
 
-# change focus
-bindsym $mod+h focus left
-bindsym $mod+j focus down
-bindsym $mod+k focus up
-bindsym $mod+l focus right
 
-# alternatively, you can use the cursor keys:
-bindsym $mod+Left focus left
-bindsym $mod+Down focus down
-bindsym $mod+Up focus up
-bindsym $mod+Right focus right
 
-# move focused window
-bindsym $mod+Shift+h move left
-bindsym $mod+Shift+j move down
-bindsym $mod+Shift+k move up
-bindsym $mod+Shift+l move right
-
-# alternatively, you can use the cursor keys:
-bindsym $mod+Shift+Left move left
-bindsym $mod+Shift+Down move down
-bindsym $mod+Shift+Up move up
-bindsym $mod+Shift+Right move right
 
 # split in horizontal orientation
 bindsym $mod+b split h
@@ -117,16 +225,11 @@ bindsym $mod+b split h
 # split in vertical orientation
 bindsym $mod+v split v
 
-# enter fullscreen mode for the focused container
-bindsym $mod+f fullscreen
 
 # change container layout (stacked, tabbed, toggle split)
 #bindsym $mod+s layout stacking
 bindsym $mod+w layout tabbed
 bindsym $mod+e layout toggle split
-
-# toggle tiling / floating
-bindsym $mod+Shift+space floating toggle
 
 # change focus between tiling / floating windows
 bindsym $mod+space focus mode_toggle
@@ -137,72 +240,10 @@ bindsym $mod+a focus parent
 # focus the child container
 bindsym $mod+z focus child
 
-# switch to workspace
-bindsym $mod+1 workspace $ws1
-bindsym $mod+2 workspace $ws2
-bindsym $mod+3 workspace $ws3
-bindsym $mod+4 workspace $ws4
-bindsym $mod+5 workspace $ws5
-bindsym $mod+6 workspace $ws6
-bindsym $mod+7 workspace $ws7
-bindsym $mod+8 workspace $ws8
-bindsym $mod+9 workspace $ws9
-bindsym $mod+0 workspace $ws10
 
-# move focused container to workspace
-bindsym $mod+Shift+1 move container to workspace $ws1
-bindsym $mod+Shift+2 move container to workspace $ws2
-bindsym $mod+Shift+3 move container to workspace $ws3
-bindsym $mod+Shift+4 move container to workspace $ws4
-bindsym $mod+Shift+5 move container to workspace $ws5
-bindsym $mod+Shift+6 move container to workspace $ws6
-bindsym $mod+Shift+7 move container to workspace $ws7
-bindsym $mod+Shift+8 move container to workspace $ws8
-bindsym $mod+Shift+9 move container to workspace $ws9
-bindsym $mod+Shift+0 move container to workspace $ws10
 
-# fix appications to specific workspaces
-assign [class="Opera"] $ws1
-assign [class="Gvim"] $ws2
-
-# reload the configuration file
-bindsym $mod+Shift+c reload
-# restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-bindsym $mod+Shift+r restart
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
-# resize window (you can also use the mouse for that)
-mode "  " {
-        # These bindings trigger as soon as you enter the resize mode
-
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym h resize shrink width 2 px or 2 ppt
-        bindsym j resize shrink height 2 px or 2 ppt
-        bindsym k resize grow height 3 px or 3 ppt
-        bindsym l resize grow width 3 px or 3 ppt
-
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 2 px or 2 ppt
-        bindsym Down resize shrink height 2 px or 2 ppt
-        bindsym Up resize grow height 3 px or 3 ppt 
-        bindsym Right resize grow width 3 px or 3 ppt
-
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-}
-bindsym $mod+r mode "  "
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)
-bar {
-        status_command i3status
 
-}
-
-exec opera
  
