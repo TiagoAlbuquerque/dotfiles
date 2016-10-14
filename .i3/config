@@ -28,16 +28,16 @@
     set $base0F #fcc09e
 
 # Workspaces naming constants 
-    set $ws1 "1 "
-    set $ws2 "2 " 
-    set $ws3 "3 "
-    set $ws4 "4 "
-    set $ws5 "5 "
-    set $ws6 "6 "
-    set $ws7 "7 "
-    set $ws8 "8 "
-    set $ws9 "9 "
-    set $ws10 "10 "
+    set $ws1 1 
+    set $ws2 2 
+    set $ws3 3 
+    set $ws4 4 
+    set $ws5 5 
+    set $ws6 6 
+    set $ws7 7 
+    set $ws8 8 
+    set $ws9 9 
+    set $ws10 10 
 
 # Basic configurations    
     
@@ -164,8 +164,7 @@
     # lock screen
     bindsym $mod+shift+x exec i3lock
     # execute Opera on startup
-    exec opera
-    
+    exec --no-startup-id "i3-msg 'workspace $ws2; exec gvim; workspace $ws1; exec opera'"
 # Restart-related bindings
 
     # reload the configuration file
