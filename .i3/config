@@ -200,7 +200,7 @@ bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcu
 #Automatic Executions
 
     # execute Opera and gvim on startup
-    exec --no-startup-id "i3-msg 'workspace $ws3; exec i3-sensible-terminal; workspace $ws2; exec gvim; workspace $ws1; exec opera'"
+    exec --no-startup-id "i3-msg 'workspace $ws2; exec gvim; workspace $ws1; exec opera'"
     exec python ~/Douments/Scripts/wallpaper.py
     exec_always feh --bg-scale ~/Pictures/Wallpapers/wallpaper.jpg
     exec_always --no-startup-id compton -f
