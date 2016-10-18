@@ -79,7 +79,8 @@
     bindsym $mod+Shift+space floating toggle
 
     # resize window (you can also use the mouse for that)
-    mode "  " {
+    set $mode_resize "  "
+    mode $mode_resize {
         # These bindings trigger as soon as you enter the resize mode
 
         # Pressing left will shrink the window’s width.
@@ -100,7 +101,7 @@
         bindsym Return mode "default"
         bindsym Escape mode "default"
     }
-    bindsym $mod+r mode "  "
+    bindsym $mod+r mode $mode_resize
 
 # Widow Colours
 #                         border  background text    indicator
@@ -177,6 +178,13 @@
     # focus the child container
     bindsym $mod+z focus child
 
+# Restart-related bindings
+
+    # reload the configuration file
+    bindsym $mod+Shift+c reload
+    # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+    bindsym $mod+Shift+r restart
+
 # Program-related bindings
     
     # start a terminal
@@ -187,22 +195,27 @@
     # lock screen
     bindsym $mod+shift+x exec bash ~/Documents/Scripts/lock.sh
 
-# Restart-related bindings
-
-    # reload the configuration file
-    bindsym $mod+Shift+c reload
-    # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-    bindsym $mod+Shift+r restart
-
-# exit i3 (logs you out of your X session)
-bindsym $mod+Shift+e exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Yes, exit i3' 'i3-msg exit'"
-
 #Automatic Executions
 
     # execute Opera and gvim on startup
-    exec --no-startup-id "i3-msg 'workspace $ws2; exec gvim; workspace $ws1; exec opera'"
-    exec python ~/Douments/Scripts/wallpaper.py
-    exec_always feh --bg-scale ~/Pictures/Wallpapers/wallpaper.jpg
+    exec --no-startup-id python ~/Documents/Scripts/wallpaper.py
     exec_always --no-startup-id compton -f
+    exec --no-startup-id "i3-msg 'workspace $ws2; exec gvim; workspace $ws1; exec opera'"
+    exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/wallpaper.jpg
 
+# Experimental shutdown mode
+    set $mode_exit "  You are about to exit i3wm -- Q  Log out | R  Reboot | S  Shutdown"
+    mode $mode_exit {
+        bindsym q exec i3-msg exit
+        bindsym r exec reboot
+        bindsym s exec shutdown now
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+    }
+    bindsym $mod+Shift+e mode $mode_exit;
+
+# exit i3 (logs you out of your X session)
+bindsym $mod+Shift+s exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Log out' 'i3-msg exit' -b 'Reboot' 'reboot' -b 'Shutdown' 'shutdown now'"
 
