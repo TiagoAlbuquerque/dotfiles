@@ -1,1 +1,16 @@
 .Xauthority
+.bash_logout
+.xsession-errors
+.bash_logout
+.vbox*
+.bash_*
+.cache*
+.mozilla*
+.fehbg
+.pki/
+Documents/
+Downloads/
+Pictures/
+.config/dconf/
+.config/opera/
+.viminfo
