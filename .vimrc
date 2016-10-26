@@ -12,7 +12,11 @@ set guioptions-=T
 set guioptions-=r
 set guioptions-=L
 
-colors monokai
+if (has("termguicolors"))
+ set termguicolors
+endif
+
+colorscheme tender
 
 set number
 set relativenumber
