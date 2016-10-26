@@ -12,7 +12,7 @@ set guioptions-=T
 set guioptions-=r
 set guioptions-=L
 
-colors desert
+colors monokai
 
 set number
 set relativenumber
