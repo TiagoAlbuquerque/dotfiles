@@ -1,3 +1,15 @@
+set nocompatible
+filetype off
+
+" set the runtime path to include Vundle and initialize
+set rtp+=.vim/bundle/Vundle.vim
+call vundle#begin('~/.vim/bundle')
+" let Vundle manage Vundle
+Plugin 'VundleVim/Vundle.vim'
+Plugin 'jedi-vim'
+
+call vundle#end()
+    
 syntax on
 
 set tabstop=4
@@ -16,7 +28,12 @@ if (has("termguicolors"))
  set termguicolors
 endif
 
-colorscheme tender
+colorscheme vividchalk
 
 set number
 set relativenumber
+
+augroup reload_vimrc " {
+    autocmd!
+    autocmd BufWritePost $MYVIMRC source $MYVIMRC
+augroup END " }
