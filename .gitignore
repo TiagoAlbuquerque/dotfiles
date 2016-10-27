@@ -42,3 +42,4 @@ Pictures/
 .config/dconf/
 .config/opera/
 .viminfo
+.profile
