@@ -198,7 +198,7 @@
 #Automatic Executions
 
     # execute Opera and gvim on startup
-    exec --no-startup-id python ~/Documents/Scripts/wallpaper.py
+    exec --no-startup-id python3 ~/Documents/Scripts/wallpaper.py
     exec_always --no-startup-id compton -f
     exec --no-startup-id "i3-msg 'workspace $ws2; exec gvim; workspace $ws1; exec opera'"
     exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/wallpaper.jpg

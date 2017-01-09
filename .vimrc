@@ -3,13 +3,20 @@ filetype off
 
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin('~/.vim/bundle')
+
+call vundle#begin()
 " let Vundle manage Vundle
 Plugin 'VundleVim/Vundle.vim'
-Plugin 'jedi-vim'
-
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
+Plugin 'airblade/vim-gitgutter'
+Plugin 'davidhalter/jedi-vim'
+Plugin 'tpope/vim-fugitive'
 call vundle#end()
-    
+" airline configuration    
+set laststatus=2
+let g:airline_powerline_fonts=1
+
 syntax on
 
 set tabstop=4
