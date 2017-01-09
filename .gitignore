@@ -45,3 +45,4 @@ Pictures/
 .viminfo
 .profile
 .python_history
+.vim/.netrwhist
