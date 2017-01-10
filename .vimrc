@@ -18,6 +18,7 @@ set laststatus=2
 let g:airline_powerline_fonts=1
 
 syntax on
+colorscheme vividchalk
 
 set tabstop=4
 set expandtab
@@ -25,6 +26,12 @@ set shiftwidth=4
 set autoindent
 set smartindent
 set cindent
+
+set number
+set relativenumber
+set scrolloff=3
+set sidescrolloff=5
+set incsearch
 
 set guioptions-=m
 set guioptions-=T
@@ -34,11 +41,6 @@ set guioptions-=L
 if (has("termguicolors"))
  set termguicolors
 endif
-
-colorscheme vividchalk
-
-set number
-set relativenumber
 
 augroup reload_vimrc " {
     autocmd!
