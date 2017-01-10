@@ -33,7 +33,7 @@ set scrolloff=3
 set sidescrolloff=5
 set incsearch
 set ttimeout
-set ttimeoutlen 100
+set ttimeoutlen=100
 
 set guioptions-=m
 set guioptions-=T
