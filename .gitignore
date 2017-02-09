@@ -46,3 +46,5 @@ Pictures/
 .profile
 .python_history
 .vim/.netrwhist
+.config/icedtea-web
+.ssh
