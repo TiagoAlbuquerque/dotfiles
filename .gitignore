@@ -48,3 +48,4 @@ Pictures/
 .vim/.netrwhist
 .config/icedtea-web
 .ssh
+.git-credentials
