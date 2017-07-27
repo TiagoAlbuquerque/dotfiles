@@ -137,7 +137,7 @@
     bindsym $mod+Shift+0 move container to workspace $ws10
 
     # fix appications to specific workspaces
-    assign [class="Opera"] $ws1
+    assign [class="Firefox"] $ws1
 #    assign [class="Gvim"] $ws2
     
 # Bar-related bindings    
@@ -188,7 +188,7 @@
 # Program-related bindings
     
     # start a terminal
-    bindsym $mod+Return exec gnome-terminal --hide-menubar
+    bindsym $mod+Return exec i3-sensible-terminal
     # start dmenu (a program launcher)
     # bindsym $mod+d exec dmenu_run
     bindsym $mod+d exec rofi -show run 
@@ -200,7 +200,7 @@
     # execute Opera and gvim on startup
     exec --no-startup-id python ~/Documents/Scripts/wallpaper.py
     exec_always --no-startup-id compton -f
-    exec --no-startup-id "i3-msg 'workspace $ws2; exec gvim; workspace $ws1; exec opera'"
+    exec --no-startup-id "i3-msg 'workspace $ws2; exec gvim; workspace $ws1; exec firefox'"
     exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/wallpaper.jpg
 
 # Experimental shutdown mode
@@ -218,4 +218,5 @@
 
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+s exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Log out' 'i3-msg exit' -b 'Reboot' 'reboot' -b 'Shutdown' 'shutdown now'"
+
 

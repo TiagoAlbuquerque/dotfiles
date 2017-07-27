@@ -13,9 +13,13 @@ Plugin 'airblade/vim-gitgutter'
 Plugin 'davidhalter/jedi-vim'
 Plugin 'tpope/vim-fugitive'
 call vundle#end()
+
+set encoding=utf8
+
 " airline configuration    
 set laststatus=2
 let g:airline_powerline_fonts=1
+let airline_powerline_fonts=1
 
 syntax on
 colorscheme vividchalk
