@@ -28,15 +28,15 @@
     set $base0F #fcc09e
 
 # Workspaces naming constants 
-    set $ws1 1 
+    set $ws1 1 
     set $ws2 2 
     set $ws3 3 
-    set $ws4 4 
-    set $ws5 5 
-    set $ws6 6 
-    set $ws7 7 
-    set $ws8 8 
-    set $ws9 9 
+    set $ws4 4 
+    set $ws5 5 
+    set $ws6 6 
+    set $ws7 7 
+    set $ws8 8 
+    set $ws9 9 
     set $ws10 10 
 
 # Basic configurations    
@@ -193,7 +193,8 @@
     # bindsym $mod+d exec dmenu_run
     bindsym $mod+d exec rofi -show run 
     # lock screen
-    bindsym $mod+shift+x exec bash ~/Documents/Scripts/lock.sh
+    bindsym $mod+shift+x exec bash ~/Documents/Code/Scripts/lock.sh
+    exec xautolock -time 1 -locker '~/Documents/Code/Scripts/lock.sh' &
 
 #Automatic Executions
 
