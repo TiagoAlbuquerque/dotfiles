@@ -193,7 +193,8 @@
     # bindsym $mod+d exec dmenu_run
     bindsym $mod+d exec rofi -show run 
     # lock screen
-    exec xset dpms 50 60 90
+    # standby 50 Suspend 60 off 90
+    exec xset dpms 50 60 90 # set screen standby suspend and off timers
     bindsym $mod+shift+x exec bash ~/Documents/Code/Scripts/lock.sh
     exec xautolock -time 1 -locker '~/Documents/Code/Scripts/lock.sh' &
 
