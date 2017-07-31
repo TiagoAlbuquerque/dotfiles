@@ -7,7 +7,7 @@
 #################
 
 # mod key Mod1=alt Mod4=win
-    set $mod Mod1
+    set $mod Mod4
 
 # Colors
     set $base00 #101218
@@ -193,6 +193,7 @@
     # bindsym $mod+d exec dmenu_run
     bindsym $mod+d exec rofi -show run 
     # lock screen
+    exec xset dpms 50 60 90
     bindsym $mod+shift+x exec bash ~/Documents/Code/Scripts/lock.sh
     exec xautolock -time 1 -locker '~/Documents/Code/Scripts/lock.sh' &
 
