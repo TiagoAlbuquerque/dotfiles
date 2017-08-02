@@ -1,14 +1,42 @@
 #.i3/config
-#################
-#               #
-#   Constants   #
-#               #
-#################
 
-# mod key Mod1=alt Mod4=win
+###---Basic Configurations---###{{{
+    font pango:System San Francisco Display 10
+    hide_edge_borders both
+    gaps inner 5
+    gaps outer 3
+
+# Modkey == Mod4 winkey
     set $mod Mod4
+    
+#floating modifier helps move floating windows - use $mod click and drag
+    floating_modifier $mod
 
-# Colors
+# }}}
+
+###---Starting External Scripts---###{{{
+    # go get new wallpaper
+    exec --no-startup-id python ~/Documents/Code/Scripts/wallpaper.py
+    # Composite manager:
+    exec_always --no-startup-id compton -f
+    # execute Opera and gvim on startup
+    exec --no-startup-id "i3-msg 'workspace $ws2; exec gvim; workspace $ws1; exec firefox'"
+    # set wallpaper
+    exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/wallpaper.jpg
+    # standby 50 Suspend 60 off 90
+    exec xset dpms 50 60 90 # set screen standby suspend and off timers
+    # set autolock to 1min and lock script
+    exec xautolock -time 1 -locker '~/Documents/Code/Scripts/lock.sh' &
+# }}}
+
+###---Definitions---###{{{
+
+# Basic definitions {{{
+    set $browser firefox
+    set $term konsole
+# }}}
+
+# Colors {{{
     set $base00 #101218
     set $base01 #1f222d
     set $base02 #252936
@@ -25,8 +53,9 @@
     set $base0D #97bbf7
     set $base0E #c0b7f9
     set $base0F #fcc09e
+# }}}
 
-# Workspaces naming constants 
+# Workspaces naming constants  {{{
     set $ws1 1 
     set $ws2 2 
     set $ws3 3 
@@ -37,80 +66,33 @@
     set $ws8 8 
     set $ws9 9 
     set $ws10 10 
+# }}}
 
-# Basic configurations    
+# ALSA/AMIXER {{{
+    set $inc --no-startup-id amixer sset Master 2%+
+    set $dec --no-startup-id amixer sset Master 5%-
+    set $mute --no-startup-id amixer sset Master mute
+# }}}
+
+# }}}
+
+###---Bindings---###{{{
+
+##--Basic Bindings--##{{{
+
+    # start a terminal
+    bindsym $mod+Return exec $term
+    #bindsym $mod+Return exec i3-sensible-terminal
+
+    # change focus between tiling / floating windows
+    bindsym $mod+space focus mode_toggle
     
-    font pango:System San Francisco Display 10
-    floating_modifier $mod
-    hide_edge_borders both
-
-# Window-related bindings
-    
-    # kill focused window
-    bindsym $mod+Shift+q kill
-
-    # change focus
-    bindsym $mod+h focus left
-    bindsym $mod+j focus down
-    bindsym $mod+k focus up
-    bindsym $mod+l focus right
-    # alternatively, you can use the arrow keys:
-    bindsym $mod+Left focus left
-    bindsym $mod+Down focus down
-    bindsym $mod+Up focus up
-    bindsym $mod+Right focus right
-
-    # move focused window
-    bindsym $mod+Shift+h move left
-    bindsym $mod+Shift+j move down
-    bindsym $mod+Shift+k move up
-    bindsym $mod+Shift+l move right
-    # alternatively, you can use the arrow keys:
-    bindsym $mod+Shift+Left move left
-    bindsym $mod+Shift+Down move down
-    bindsym $mod+Shift+Up move up
-    bindsym $mod+Shift+Right move right
-
-    # enter fullscreen mode for the focused container
-    bindsym $mod+f fullscreen
-
     # toggle tiling / floating
     bindsym $mod+Shift+space floating toggle
 
-    # resize window (you can also use the mouse for that)
-    set $mode_resize "  "
-    mode $mode_resize {
-        # These bindings trigger as soon as you enter the resize mode
+# }}}
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing down will shrink the window’s height.
-        # Pressing up will grow the window’s height.
-        bindsym h resize shrink width 2 px or 2 ppt
-        bindsym l resize grow width 3 px or 3 ppt
-        bindsym j resize shrink height 2 px or 2 ppt
-        bindsym k resize grow height 3 px or 3 ppt
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 2 px or 2 ppt
-        bindsym Right resize grow width 3 px or 3 ppt
-        bindsym Down resize shrink height 2 px or 2 ppt
-        bindsym Up resize grow height 3 px or 3 ppt 
-
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-    }
-    bindsym $mod+r mode $mode_resize
-
-# Widow Colours
-#                         border  background text    indicator
-  client.focused          $base01 $base01    $base07 $base0F
-  client.focused_inactive $base02 $base02    $base03 $base0F
-  client.unfocused        $base02 $base02    $base03 $base0F
-  client.urgent           $base02 $base08    $base00 $base0F
-
-# Workspace-related bindings
-
+##--Number key Bindings--##{{{
     # switch to workspace
     bindsym $mod+1 workspace $ws1
     bindsym $mod+2 workspace $ws2
@@ -134,6 +116,132 @@
     bindsym $mod+Shift+8 move container to workspace $ws8
     bindsym $mod+Shift+9 move container to workspace $ws9
     bindsym $mod+Shift+0 move container to workspace $ws10
+#}}}
+
+##--Letter key Bindings--##{{{
+# Q
+# kill focused window
+    bindsym $mod+Shift+q kill 
+# W
+    bindsym $mod+Shift+w exec --no-startup-id $browser
+# E
+    bindsym $mod+Shift+e mode $mode_exit;
+# R
+    # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
+    bindsym $mod+Shift+r restart
+# T
+# Y
+# U
+# I
+# O
+# P
+# A
+# S
+# D
+    # start dmenu (a program launcher)
+    # bindsym $mod+d exec dmenu_run
+    bindsym $mod+d exec rofi -show run 
+# F
+    bindsym $mod+f fullscreen
+# G
+# H
+    bindsym $mod+h focus left
+    bindsym $mod+Shift+h move left
+# J
+    bindsym $mod+j focus down
+    bindsym $mod+Shift+j move down
+# K
+    bindsym $mod+k focus up
+    bindsym $mod+Shift+k move up
+# L
+    bindsym $mod+l focus right
+    bindsym $mod+Shift+l move right
+# Z
+# X
+    # lock screen
+    bindsym $mod+shift+x exec bash ~/Documents/Code/Scripts/lock.sh
+# C
+# V
+    # split in vertical orientation
+    bindsym $mod+v split v
+# B
+    # split in horizontal orientation
+    bindsym $mod+b split h
+# N
+# M
+
+# }}}
+
+# }}}
+
+# Window-related bindings
+    
+    # change focus
+    # alternatively, you can use the arrow keys:
+    bindsym $mod+Left focus left
+    bindsym $mod+Down focus down
+    bindsym $mod+Up focus up
+    bindsym $mod+Right focus right
+
+    # move focused window
+    # alternatively, you can use the arrow keys:
+    bindsym $mod+Shift+Left move left
+    bindsym $mod+Shift+Down move down
+    bindsym $mod+Shift+Up move up
+    bindsym $mod+Shift+Right move right
+
+    # enter fullscreen mode for the focused container
+
+
+# MODE - resize window (you can also use the mouse for that){{{
+    set $mode_resize "  "
+    mode $mode_resize {
+        # These bindings trigger as soon as you enter the resize mode
+
+        # Pressing left will shrink the window’s width.
+        # Pressing right will grow the window’s width.
+        # Pressing down will shrink the window’s height.
+        # Pressing up will grow the window’s height.
+        bindsym h resize shrink width 2 px or 2 ppt
+        bindsym l resize grow width 3 px or 3 ppt
+        bindsym j resize shrink height 2 px or 2 ppt
+        bindsym k resize grow height 3 px or 3 ppt
+        # same bindings, but for the arrow keys
+        bindsym Left resize shrink width 2 px or 2 ppt
+        bindsym Right resize grow width 3 px or 3 ppt
+        bindsym Down resize shrink height 2 px or 2 ppt
+        bindsym Up resize grow height 3 px or 3 ppt 
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+    }
+    bindsym $mod+r mode $mode_resize
+# }}}
+
+
+# MODE - shutdown mode {{{
+    set $mode_exit "  You are about to exit i3wm -- Q  Log out | R  Reboot | S  Shutdown"
+    mode $mode_exit {
+        bindsym q exec i3-msg exit
+        bindsym r exec reboot
+        bindsym s exec shutdown now
+
+        # back to normal: Enter or Escape
+        bindsym Return mode "default"
+        bindsym Escape mode "default"
+    }
+# }}}
+
+
+# Widow Colours
+#                         border  background text    indicator
+    client.focused          $base01 $base01    $base07 $base0F
+    client.focused_inactive $base02 $base02    $base03 $base0F
+    client.unfocused        $base02 $base02    $base03 $base0F
+    client.urgent           $base02 $base08    $base00 $base0F
+
+# Workspace-related bindings
 
     # fix appications to specific workspaces
     assign [class="Firefox"] $ws1
@@ -157,19 +265,13 @@
 
 #Container-related bindings
 
-    # split in horizontal orientation
-    bindsym $mod+b split h
 
-    # split in vertical orientation
-    bindsym $mod+v split v
 
     # change container layout (stacked, tabbed, toggle split)
     #bindsym $mod+s layout stacking
     bindsym $mod+w layout tabbed
     bindsym $mod+e layout toggle split
 
-    # change focus between tiling / floating windows
-    bindsym $mod+space focus mode_toggle
 
     # focus the parent container
     bindsym $mod+a focus parent
@@ -181,42 +283,6 @@
 
     # reload the configuration file
     bindsym $mod+Shift+c reload
-    # restart i3 inplace (preserves your layout/session, can be used to upgrade i3)
-    bindsym $mod+Shift+r restart
-
-# Program-related bindings
-    
-    # start a terminal
-    bindsym $mod+Return exec i3-sensible-terminal
-    # start dmenu (a program launcher)
-    # bindsym $mod+d exec dmenu_run
-    bindsym $mod+d exec rofi -show run 
-    # lock screen
-    # standby 50 Suspend 60 off 90
-    exec xset dpms 50 60 90 # set screen standby suspend and off timers
-    bindsym $mod+shift+x exec bash ~/Documents/Code/Scripts/lock.sh
-    exec xautolock -time 1 -locker '~/Documents/Code/Scripts/lock.sh' &
-
-#Automatic Executions
-
-    # execute Opera and gvim on startup
-    exec --no-startup-id python ~/Documents/Code/Scripts/wallpaper.py
-    exec_always --no-startup-id compton -f
-    exec --no-startup-id "i3-msg 'workspace $ws2; exec gvim; workspace $ws1; exec firefox'"
-    exec_always --no-startup-id feh --bg-scale ~/Pictures/Wallpapers/wallpaper.jpg
-
-# Experimental shutdown mode
-    set $mode_exit "  You are about to exit i3wm -- Q  Log out | R  Reboot | S  Shutdown"
-    mode $mode_exit {
-        bindsym q exec i3-msg exit
-        bindsym r exec reboot
-        bindsym s exec shutdown now
-
-        # back to normal: Enter or Escape
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-    }
-    bindsym $mod+Shift+e mode $mode_exit;
 
 # exit i3 (logs you out of your X session)
 bindsym $mod+Shift+s exec "i3-nagbar -t warning -m 'You pressed the exit shortcut. Do you really want to exit i3? This will end your X session.' -b 'Log out' 'i3-msg exit' -b 'Reboot' 'reboot' -b 'Shutdown' 'shutdown now'"

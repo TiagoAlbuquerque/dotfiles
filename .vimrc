@@ -30,7 +30,7 @@ set shiftwidth=4
 set autoindent
 set smartindent
 set cindent
-set foldmethod=syntax
+autocmd Filetype * setlocal foldmethod=syntax
 
 set number
 set relativenumber
