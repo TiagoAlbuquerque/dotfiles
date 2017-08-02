@@ -7,8 +7,11 @@
 .config/gtk-*
 .config/opera*
 .config/user*
+.config/Trolltech.conf
+.config/free
 .dbus
 .dmenu_cache
+.fonts*
 .mozilla/
 .local/
 Pictures/
