@@ -30,7 +30,7 @@ set shiftwidth=4
 set autoindent
 set smartindent
 set cindent
-autocmd Filetype * setlocal foldmethod=syntax
+autocmd Filetype * setlocal foldmethod=marker
 
 set number
 set relativenumber
