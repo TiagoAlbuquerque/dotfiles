@@ -60,6 +60,10 @@ exec "set listchars=tab:\uBB\uBB,trail:\uB7,nbsp:~"
     set list   
 "}}}
 
+"""---Auto erase trailing whitespaces---""""{{{
+autocmd BufWritePre * %s/\s\+$//e
+"}}}
+
 """---Set up smarter search behaviour---"""{{{
 set incsearch       "Lookahead as search pattern is specified
 set ignorecase      "Ignore case in all searches...
