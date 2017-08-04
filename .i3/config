@@ -231,9 +231,9 @@
 ###---Modes---###{{{
 
 # MODE - resize window (you can also use the mouse for that){{{
-    set $mode_resize "  "
-    mode $mode_resize {
-        # These bindings trigger as soon as you enter the resize mode
+
+    set $mode_resize "  " 
+    mode $mode_resize { # These bindings trigger as soon as you enter the resize mode
 
         # Pressing left will shrink the window’s width.
         # Pressing right will grow the window’s width.
