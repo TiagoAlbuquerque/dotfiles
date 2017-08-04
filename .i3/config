@@ -68,8 +68,8 @@
     client.urgent           $base02 $base08    $base00 $base0F
 # }}}
 
-# Bar-related bindings {{{    
-    
+# Bar-related bindings {{{
+
     bar {
         status_command i3status
         colors {
@@ -115,7 +115,7 @@
 
     # change focus between tiling / floating windows
     bindsym $mod+space          focus mode_toggle
-    
+
     # toggle tiling / floating
     bindsym $mod+Shift+space    floating toggle
 
@@ -133,7 +133,7 @@
     bindsym $mod+8          workspace $ws8
     bindsym $mod+9          workspace $ws9
     bindsym $mod+0          workspace $ws10
-    
+
     # move focused container to workspace
     bindsym $mod+Shift+1    move container to workspace $ws1
     bindsym $mod+Shift+2    move container to workspace $ws2
@@ -152,7 +152,7 @@
 ##-Top row-##{{{
 # Q
     # kill focused window
-    bindsym $mod+Shift+q    kill 
+    bindsym $mod+Shift+q    kill
 # W
     # Switch to tabbed layout
     bindsym $mod+w          layout tabbed
@@ -175,14 +175,14 @@
 # O
 # P
 # }}}
- 
+
 ##-Home row-##{{{
 # A
 # S
 # D
     # start dmenu (a program launcher)
     # bindsym $mod+d exec dmenu_run
-    bindsym $mod+d          exec rofi -show run 
+    bindsym $mod+d          exec rofi -show run
 # F
     # enter fullscreen mode for the focused container
     bindsym $mod+f          fullscreen
@@ -232,7 +232,7 @@
 
 # MODE - resize window (you can also use the mouse for that){{{
 
-    set $mode_resize "  " 
+    set $mode_resize "  "
     mode $mode_resize { # These bindings trigger as soon as you enter the resize mode
 
         # Pressing left will shrink the window’s width.
@@ -247,7 +247,7 @@
         bindsym Left resize shrink width 2 px or 2 ppt
         bindsym Right resize grow width 3 px or 3 ppt
         bindsym Down resize shrink height 2 px or 2 ppt
-        bindsym Up resize grow height 3 px or 3 ppt 
+        bindsym Up resize grow height 3 px or 3 ppt
 
         # back to normal: Enter or Escape
         bindsym Return mode "default"
@@ -275,7 +275,7 @@
 # fix appications to specific workspaces
     assign [class="Firefox"] $ws1
 #assign [class="Gvim"] $ws2
-    
+
 #Container-related bindings
 
     # focus the parent container
