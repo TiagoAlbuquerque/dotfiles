@@ -45,7 +45,9 @@
     set $base00 #101218
     set $base01 #1f222d
     set $base02 #252936
+    set $base021 #363a47
     set $base03 #7780a1
+    set $base031 #566080
     set $base04 #C0C5CE
     set $base05 #d1d4e0
     set $base06 #C9CCDB
@@ -61,11 +63,11 @@
 # }}}
 
 # Widow Colours {{{
-#                         border  background text    indicator
-    client.focused          $base01 $base01    $base07 $base0F
-    client.focused_inactive $base02 $base02    $base03 $base0F
-    client.unfocused        $base02 $base02    $base03 $base0F
-    client.urgent           $base02 $base08    $base00 $base0F
+#                           border      background  text        indicator
+    client.focused          $base01     $base01     $base07     $base0F
+    client.focused_inactive $base02     $base02     $base03    $base0F
+    client.unfocused        $base02     $base021    $base031    $base0F
+    client.urgent           $base02     $base08     $base00     $base0F
 # }}}
 
 # Bar-related bindings {{{
