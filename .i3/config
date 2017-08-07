@@ -59,7 +59,7 @@
     set $base0C #97e0ff
     set $base0D #97bbf7
     set $base0E #c0b7f9
-    set $base0F #ff00ff
+    set $base0F #6600cc
 # }}}
 
 # Widow Colours {{{
