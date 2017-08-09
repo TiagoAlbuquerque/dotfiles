@@ -1,4 +1,5 @@
 #.i3/config
+# vim: filetype=i3
 
 ###---Basic Configurations---###{{{
     font pango:System San Francisco Display 10
@@ -20,6 +21,7 @@
     set $scripts_folder~/Documents/Code/Scripts/
     set $lock_script ~/Documents/Code/Scripts/lock.sh
     set $wallpaper_script ~/Documents/Code/Scripts/wallpaper.py
+    set $flash_script ~/Documents/Code/Scripts/flash.sh
 # }}}
 
 # Workspaces naming constants  {{{
@@ -92,6 +94,8 @@
 ###---Starting External Scripts---###{{{
     # go get new wallpaper
     exec    --no-startup-id python $wallpaper_script
+    # MEGASync
+    exec    --no-startup-id megasync
     # execute a browser instance and gvim on startup
     exec    --no-startup-id "i3-msg 'workspace $ws2; exec gvim; workspace $ws1;'"
     exec    $browser
@@ -226,6 +230,8 @@
     bindsym $mod+Left move workspace to output right
 # Right Arrow
     bindsym $mod+Right move workspace to output right
+# Backspace
+    bindsym $mod+BackSpace exec bash $flash_script
 # }}}
 
 # }}}
