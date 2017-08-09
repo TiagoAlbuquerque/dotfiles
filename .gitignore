@@ -5,12 +5,16 @@ Pictures/
 
 .bash_*
 .cache*
+.config/autostart
+.config/cef_user_data
 .config/dconf/
 .config/free*
 .config/gtk-*
 .config/konsole*
 .config/icedtea-web
+.config/naev
 .config/opera*
+.config/pulse*
 .config/teamviewer*
 .config/Trolltech.conf
 .config/user*
@@ -25,6 +29,8 @@ Pictures/
 .gtkrc-2.0
 .gbas*
 .*gbas.so_u
+.gconf
+.gksu.lock
 .java/
 .lesshst
 .local/
@@ -34,6 +40,7 @@ Pictures/
 .pki/
 .Private*
 .profile
+.pulse-cookie
 .python_history
 .remmina*
 .rnd
@@ -48,3 +55,4 @@ Pictures/
 .vim/.netrwhist
 .Xauthority
 .xsession-errors
+.sudo_as_admin_successful
