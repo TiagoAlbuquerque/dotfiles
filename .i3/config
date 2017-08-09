@@ -1,4 +1,4 @@
-#.i3/config
+# .i3/config
 # vim: filetype=i3
 
 ###---Basic Configurations---###{{{
@@ -6,9 +6,9 @@
     hide_edge_borders both
     gaps inner 10
     gaps outer 5
-# Modkey == Mod4 winkey
+    # Modkey == Mod4 winkey
     set $mod Mod4
-#floating modifier helps move floating windows - use $mod click and drag
+    #floating modifier helps move floating windows - use $mod click and drag
     floating_modifier $mod
 # }}}
 
@@ -65,7 +65,7 @@
 # }}}
 
 # Widow Colours {{{
-#                           border      background  text        indicator
+#   class                   border      background  text        indicator
     client.focused          $base01     $base01     $base07     $base0F
     client.focused_inactive $base02     $base02     $base03    $base0F
     client.unfocused        $base02     $base021    $base031    $base0F
@@ -94,6 +94,8 @@
 ###---Starting External Scripts---###{{{
     # go get new wallpaper
     exec    --no-startup-id python $wallpaper_script
+    #Unclutter makes the mouse invisible after a brief period
+    exec --no-startup-id unclutter
     # MEGASync
     exec    --no-startup-id megasync
     # execute a browser instance and gvim on startup
@@ -226,11 +228,11 @@
 # }}}
 
 ##--Special key Bindings--##{{{
-# Left Arrow
+    # Left Arrow
     bindsym $mod+Left move workspace to output right
-# Right Arrow
+    # Right Arrow
     bindsym $mod+Right move workspace to output right
-# Backspace
+    # Backspace
     bindsym $mod+BackSpace exec bash $flash_script
 # }}}
 
