@@ -94,8 +94,10 @@
 ###---Starting External Scripts---###{{{
     # go get new wallpaper
     exec    --no-startup-id python $wallpaper_script
+    #NextCloud é apenas relevante no STI
+    exec    --no-startup-id ~/bin/Nextcloud
     #Unclutter makes the mouse invisible after a brief period
-    exec --no-startup-id unclutter
+    exec    --no-startup-id unclutter
     # MEGASync
     exec    --no-startup-id megasync
     # execute a browser instance and gvim on startup

@@ -105,7 +105,7 @@ nnoremap <C-l> <C-w>l
 
 """---Make the 121st column stand out---"""{{{
     highlight OverLength guibg=magenta ctermbg=magenta
-    call matchadd('OverLength','\%121v',100)
+    call matchadd('OverLength','\%101v',100)
 "}}}
 
 """---Highlight current cursor line and column---"""{{{
