@@ -17,6 +17,7 @@
 # Basic definitions {{{
     set $browser firefox
     set $term konsole
+#    set $term i3-sensible-terminal
     set $wallpaper ~/Pictures/Wallpapers/wallpaper.jpg
     set $scripts_folder~/Documents/Code/Scripts/
     set $lock_script ~/Documents/Code/Scripts/lock.sh
@@ -26,8 +27,8 @@
 
 # Workspaces naming constants  {{{
     set $ws1    1 
-    set $ws2    2 
-    set $ws3    3 
+    set $ws2    2 
+    set $ws3    3 
     set $ws4    4 
     set $ws5    5 
     set $ws6    6 
@@ -101,18 +102,22 @@
     # MEGASync
     exec    --no-startup-id megasync
     # execute a browser instance and gvim on startup
-    exec    --no-startup-id "i3-msg 'workspace $ws2; exec gvim; workspace $ws1;'"
+    exec    --no-startup-id "i3-msg 'workspace $ws2; exec $term; workspace $ws1;'"
     exec    $browser
     # standby 50 Suspend 60 off 90
-    exec    xset dpms 50 60 90 # set screen standby suspend and off timers
+#exec    xset dpms 50 60 90 # set screen standby suspend and off timers
     # set autolock to 1min and lock script
-    exec    xautolock -time 1 -locker $lock_script &
+    #exec    xautolock -time 1 -locker $lock_script &
     #Remaps the caps lock button to escape and uses the US international keyboard with dead keys
     exec_always --no-startup-id setxkbmap -option caps:escape
     # Composite manager:
     exec_always --no-startup-id compton -f
     # set wallpaper
     exec_always --no-startup-id feh --bg-scale $wallpaper
+
+    #STI
+    exec_always --no-startup_id eval `ssh-agent -s`
+    exec --no-startup-id google-drive-ocamlfuse /media/googledrive
 # }}}
 
 ###---Bindings---###{{{

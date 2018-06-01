@@ -11,8 +11,10 @@ set nocompatible
     Plugin 'vim-airline/vim-airline'
     Plugin 'vim-airline/vim-airline-themes'
     Plugin 'airblade/vim-gitgutter'
-    Plugin 'davidhalter/jedi-vim'
     Plugin 'tpope/vim-fugitive'
+    Plugin 'davidhalter/jedi-vim'
+    Plugin 'scrooloose/syntastic'
+    Plugin 'nvie/vim-flake8'
     call vundle#end()
     filetype on
 "}}}
@@ -32,6 +34,7 @@ set nocompatible
     set scrolloff=5
     set sidescrolloff=10
 
+    let python_highlight_all=1
     syntax on
     colorscheme vividchalk
 
